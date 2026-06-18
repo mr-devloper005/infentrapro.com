@@ -15,14 +15,14 @@ body {
 }
 
 *::selection {
-  background: var(--editorial-red) !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff;
+  background: #bfe0ff !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f;
 }
 
 *::-moz-selection {
-  background: var(--editorial-red) !important;
-  color: #fff !important;
+  background: #bfe0ff !important;
+  color: #07111f !important;
 }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -35,10 +35,7 @@ body {
   font-family: Georgia, 'Times New Roman', serif;
 }
 
-.editorial-brand {
-  font-style: italic;
-  letter-spacing: -0.065em;
-}
+.editorial-brand { letter-spacing: .04em; }
 
 .editorial-rule { border-color: color-mix(in srgb, var(--editorial-ink) 22%, transparent); }
 
@@ -79,7 +76,26 @@ body {
 .article-content li { margin: .5em 0; }
 .article-content img { width: 100%; margin: 2em 0; }
 
-input, textarea, select, button { border-radius: 0 !important; }
+@keyframes editable-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes editable-soft-pop {
+  from { opacity: 0; transform: scale(.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.editable-animate { animation: editable-fade-up .65s ease both; }
+.editable-pop { animation: editable-soft-pop .5s ease both; }
+.editable-stagger > * { animation: editable-fade-up .55s ease both; }
+.editable-stagger > *:nth-child(2) { animation-delay: .06s; }
+.editable-stagger > *:nth-child(3) { animation-delay: .12s; }
+.editable-stagger > *:nth-child(4) { animation-delay: .18s; }
+.editable-stagger > *:nth-child(5) { animation-delay: .24s; }
+.editable-stagger > *:nth-child(6) { animation-delay: .3s; }
+
+input, textarea, select { border-radius: 0 !important; }
 
 @media (max-width: 640px) {
   .article-content { font-size: 1.05rem; line-height: 1.72; }
